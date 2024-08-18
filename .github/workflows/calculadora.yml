@@ -17,7 +17,7 @@ jobs:
       - name: Checkout Other Repository
         uses: actions/checkout@v4
         with:
-          repository: "tiomika/${{ github.event.inputs.repo }}"
+          repository: "tiomika/calculadora"
           ref: ${{ github.event.inputs.pr_ref }}
           path: "sut"
 
