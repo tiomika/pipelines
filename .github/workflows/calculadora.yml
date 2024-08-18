@@ -6,9 +6,9 @@ on:
       pr_ref:
         description: 'Pull Request Reference'
         required: true
-      repo:
-        description: 'Repository name'
-        required: true
+      # repo:
+      #   description: 'Repository name'
+      #   required: true
 jobs:
   test-other-repo:
     runs-on: ubuntu-latest
