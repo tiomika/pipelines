@@ -26,9 +26,9 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Install Dependencies
-        run: yarn install --frozen-lockfile
-        working-directory: ./sut
+      # - name: Install Dependencies
+      #   run: yarn install --frozen-lockfile
+      #   working-directory: ./sut
 
       - name: Run Tests
         run: yarn test
