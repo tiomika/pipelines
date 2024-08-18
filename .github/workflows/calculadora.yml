@@ -6,9 +6,9 @@ on:
       pr_ref:
         description: 'Pull Request Reference'
         required: true
-      # repo:
-      #   description: 'Repository name'
-      #   required: true
+      repo:
+        description: 'Repository name'
+        required: true
 jobs:
   test-other-repo:
     runs-on: ubuntu-latest
@@ -17,8 +17,8 @@ jobs:
       - name: Checkout Other Repository
         uses: actions/checkout@v4
         with:
-          repository: "tiomika/calculadora"
-          ref: ${{ github.event.inputs.pr_ref }}
+          repository: "tiomika/${{ github.event.inputs.repo }}"
+          ref: "refs/pull/${{ github.event.inputs.pr_ref }}/head"
           path: "sut"
 
       - name: Setup Node
