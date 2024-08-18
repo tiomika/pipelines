@@ -1,0 +1,35 @@
+name: Automation
+
+on:
+  workflow_dispatch:
+    inputs:
+      pr_ref:
+        description: 'Pull Request Reference'
+        required: true
+      repo:
+        description: 'Repository name'
+        required: true
+jobs:
+  test-other-repo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Other Repository
+        uses: actions/checkout@v4
+        with:
+          repository: "tiomika/${{ github.event.inputs.repo }}"
+          ref: ${{ github.event.inputs.pr_ref }}
+          path: "sut"
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install Dependencies
+        run: yarn install --frozen-lockfile
+        working-directory: ./sut
+
+      - name: Run Tests
+        run: yarn test
+        working-directory: ./sut
