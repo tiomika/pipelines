@@ -27,7 +27,7 @@ jobs:
           path: "sut"
 
       - name: Copy test files to challenge repository
-        run: cp -r tests/* sut/
+        run: cp -r tests/calculadora/* sut/
 
       - name: Setup Node
         uses: actions/setup-node@v4
