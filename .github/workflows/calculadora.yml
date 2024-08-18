@@ -16,6 +16,8 @@ jobs:
     steps:
       - name: Checkout Pipeline Repository
         uses: actions/checkout@v4
+        with:
+          path: "tests"
 
       - name: Checkout Challenge Repository
         uses: actions/checkout@v4
@@ -25,7 +27,7 @@ jobs:
           path: "sut"
 
       - name: Copy test files to challenge repository
-        run: cp -r * sut/
+        run: cp -r tests/* sut/
 
       - name: Setup Node
         uses: actions/setup-node@v4
