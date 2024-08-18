@@ -14,12 +14,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Other Repository
+      - name: Checkout Pipeline Repository
+        uses: actions/checkout@v4
+
+      - name: Checkout Challenge Repository
         uses: actions/checkout@v4
         with:
           repository: "tiomika/${{ github.event.inputs.repo }}"
           ref: "refs/pull/${{ github.event.inputs.pr_ref }}/head"
           path: "sut"
+
+      - name: Copy test files to challenge repository
+        run: cp -r * sut/
 
       - name: Setup Node
         uses: actions/setup-node@v4
