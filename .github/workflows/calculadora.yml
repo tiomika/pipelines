@@ -10,7 +10,7 @@ on:
         description: 'Repository name'
         required: true
 jobs:
-  test-other-repo:
+  run-tests:
     runs-on: ubuntu-latest
 
     steps:
